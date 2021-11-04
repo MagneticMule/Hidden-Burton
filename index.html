@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hidden Burton - The Best Kept Secrets of Burton on Trent</title>
+  </head>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat|Oswald|Raleway&display=swap');
+    body {
+      min-height: 100%;
+      margin: 0;
+      position: relative;
+    }
+    .header {
+      transition: background-color 0.6s, color 0.6s, height 0.3s;
+      width: 100%;
+      height: 120px;
+      display: flex;
+      position: fixed;
+      flex-direction: row;
+      background-color: rgba(32, 29, 29, 0.83);
+      backdrop-filter: blur(16px);
+      color: white;
+      z-index: 4;
+    }
+
+    header > :first-child {
+      margin-left: 80px;
+    }
+
+    .header__button {
+      padding: 20px 15px;
+      margin: auto 0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    .header__button:hover {
+      color: rgb(243, 192, 192);
+    }
+
+    .header__button--action {
+      border: 2px solid rgb(204, 198, 198);
+      border-radius: 32px;
+    }
+
+    .header__button--action:hover {
+      background: rgb(204, 198, 198);
+      color: black;
+    }
+
+    #static-box {
+      margin: 0;
+      position: fixed;
+      background: rgba(1, 0.4, 0.4, 0.1);
+      border: 10px dashed black;
+      z-index: 2;
+    }
+
+    .box {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+    }
+
+    #box1 {
+      background: rgb(255, 255, 232);
+    }
+    #box2 {
+      background: rgb(81, 51, 212);
+    }
+    #box3 {
+      background: rgb(21, 220, 255);
+    }
+    #box4 {
+      background: rgb(56, 0, 161);
+    }
+    #box5 {
+      background: rgb(136, 7, 136);
+    }
+
+    img {
+      opacity: 0;
+      transition: opacity 1s, transform 1.33s;
+      transform: translate(0, 20px);
+      box-shadow: 0 88px 80px -50px rgba(0, 0, 0, 0.6), 0 -88px 88px -94px rgba(90, 45, 3, 0.43);
+      /* border-radius: 8px; */
+      height: 100vh;
+      width: 100vw;
+      object-fit: cover;
+
+    }
+
+    .shown {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .img__text {
+      z-index: 3;
+      padding: 4em;
+      background: rgba(0, 0, 0, 0.37);
+      backdrop-filter: blur(16px);
+      position: absolute;
+    }
+
+    .img__text-title {
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-weight: bolder;
+      text-shadow: rgba(1, 0.4, 0.4, 0.4) 0px 8px 24px, rgba(0, 0, 0, 0.33) 4px 4px 4px;
+
+      font-size: 56px;
+      text-transform: uppercase;
+    }
+
+    .img__text-blurb {
+      color: rgba(255, 255, 255, 0.8);
+      font-family: 'Raleway', sans-serif;
+      line-height: 1.6;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .invert {
+      background: rgba(252, 249, 249, 0.83);
+      color: black;
+      height: 80px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      background: white;
+      padding: 20px 15px;
+      margin: 20px;
+    }
+
+    .check-item__checkbox {
+      background: green;
+      margin: 25px 20px;
+      padding: 20px 10px;
+      color: black;
+    }
+
+    .check-item__checkbox input + label {
+      padding: 1rem 1rem 1rem 4rem;
+      margin: 0;
+    }
+
+    .check-item__checkbox:checked + label {
+      background-color: yellow;
+    }
+  </style>
+  <body>
+    <header class="header">
+      <div class="header__button">Home</div>
+      <div class="header__button">register</div>
+      <div class="header__button">share</div>
+      <div class="header__button"></div>
+      <div class="header__button header__button--action">GET IN TOUCH</div>
+    </header>
+
+    <section class="box" id="box1">
+      <img id="image1" src="https://picsum.photos/seed/222/1200/600"/>
+      <div class="img__text">
+        <div class="img__text-title">Hidden Burton</div>
+        <div class="img__text-blurb">
+          All the best bits you havent seen.
+        </div>
+      </div>
+    </section>
+    <section class="box" id="box2">
+      <img id="image2" loading="lazy" src="https://picsum.photos/seed/212/1200/600" />
+    </section>
+    <section class="box" id="box3">
+      <img id="image3" loading="lazy" src="https://picsum.photos/seed/2345/1200/600" />
+    </section>
+    <section class="box" id="box4">
+      <img id="image4" loading="lazy" src="https://picsum.photos/seed/332/1200/600" />
+    </section>
+    <section class="box" id="box5">
+      <img id="image5" loading="lazy" src="https://picsum.photos/seed/234255/1200/600" />
+    </section>
+  </body>
+
+  <script>
+    const sectionObserverOptions = {
+      root: null, //default
+      threshold: 0.5,
+      rootMargin: '0px',
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // add the class that will animate the image in on load
+          entry.target.classList.toggle('shown');
+          // remove the entry from the observers watch list
+          sectionObserver.unobserve(entry.target);
+        }
+      }, sectionObserverOptions);
+    });
+
+    document.querySelectorAll('img').forEach((e) => {
+      sectionObserver.observe(e);
+    });
+    //------------------------
+    const header = document.querySelector('header');
+    const section2 = document.querySelector('#box2');
+
+    const headerObserverOptions = {
+      root: null, //default
+      threshold: 0.5,
+      rootMargin: '-130px 0px -220px 0px',
+    };
+
+    const headerObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        console.log(entry.target);
+        if (entry.isIntersecting) header.classList.toggle('invert');
+      });
+    }, headerObserverOptions);
+
+    headerObserver.observe(section2);
+  </script>
+</html>
